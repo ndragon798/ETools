@@ -1,0 +1,11 @@
+c:\users\nathan\documents\visual studio 2013\Projects\ETools\ETools\bin\Debug\ETools.exe.config
+c:\users\nathan\documents\visual studio 2013\Projects\ETools\ETools\bin\Debug\ETools.exe
+c:\users\nathan\documents\visual studio 2013\Projects\ETools\ETools\bin\Debug\ETools.pdb
+c:\users\nathan\documents\visual studio 2013\Projects\ETools\ETools\bin\Debug\ETools.xml
+c:\users\nathan\documents\visual studio 2013\Projects\ETools\ETools\obj\Debug\ETools.Form1.resources
+c:\users\nathan\documents\visual studio 2013\Projects\ETools\ETools\obj\Debug\ETools.Resources.resources
+c:\users\nathan\documents\visual studio 2013\Projects\ETools\ETools\obj\Debug\ETools.vbproj.GenerateResource.Cache
+c:\users\nathan\documents\visual studio 2013\Projects\ETools\ETools\obj\Debug\ETools.exe
+c:\users\nathan\documents\visual studio 2013\Projects\ETools\ETools\obj\Debug\ETools.xml
+c:\users\nathan\documents\visual studio 2013\Projects\ETools\ETools\obj\Debug\ETools.pdb
+C:\Users\Nathan\documents\visual studio 2013\Projects\ETools\ETools\obj\Debug\ETools.vbprojResolveAssemblyReference.cache
