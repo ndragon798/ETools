@@ -11,7 +11,7 @@ Public Class Form1
         myProcess = New Process()
         myProcess.StartInfo.FileName = "C:\Windows\System32\SecEdit.exe"
         myProcess.StartInfo.Arguments = CmdStr
-        'myProcess.Start()
+        myProcess.Start()
         Threading.Thread.Sleep(2000)
         Dim EntireFile As String
         'Dim oFile As System.IO.File
@@ -21,28 +21,17 @@ Public Class Form1
         EntireFile = oRead.ReadToEnd()
         TextBox1.Text = (EntireFile)
 
-        'PASSWORD COMPLEXTIY SET
         PassWordComplexity()
-        '/END PASSWORD COMPLETIXTY SET
 
-        'GUESTACCOUNT SET
         GuestAccountSet()
-        '/END GUEST ACCOUNT SET
 
-        'MIN PASSWORD AGE SET
-        MinPassAge()
+        setVal(New Regex("MinimumPasswordAge = -?\d+"), 1)
 
-        '/END MIN PASSWORD AGE SET
-        'MAX PASSWORD AGE SET
-        MaxPassAge()
-        '/END MAX PASSWORD AGE SET
+        setVal(New Regex("MaximumPasswordAge = -?\d+"), 2)
 
-        'MIN PASSWORD LENGTH SET 
-        MinPassLeg()
-        '/END MIN PASSWORD LENGTHSET
-        'PASSWORDS REMEMBERED SET
-        PassMem()
-        '/END PASSWORDS REMEMBERED SET
+        setVal(New Regex("MinimumPasswordLength = -?\d+"), 3)
+
+        setVal(New Regex("PasswordHistorySize = -?\d+"), 4)
     End Sub
     Public Sub PassWordComplexity()
         If TextBox1.Text.Contains("PasswordComplexity = 0") Then
@@ -68,54 +57,23 @@ Public Class Form1
         End If
     End Sub
 
-    Public Sub MinPassAge()
-        Dim MinAgea = New Regex("MinimumPasswordAge = -?\d+")
-        Dim MinAgeb = New Regex("-?\d+")
-        Try
-            Dim matchMinAgea As MatchCollection = MinAgea.Matches(TextBox1.Text)
-            Dim matchMinAgeb As MatchCollection = MinAgeb.Matches(matchMinAgea(0).ToString)
-            Dim MinAge As Integer = Convert.ToInt32(matchMinAgeb(0).ToString)
-            NumericUpDown1.Value = MinAge
-        Catch ex As Exception
-        End Try
-    End Sub
-
-    Public Sub MaxPassAge()
-        Dim MaxAgea = New Regex("MaximumPasswordAge = -?\d+")
-        Dim MaxAgeb = New Regex("-?\d+")
-        Try
-            Dim matchMaxAgea As MatchCollection = MaxAgea.Matches(TextBox1.Text)
-            Dim matchMaxAgeb As MatchCollection = MaxAgeb.Matches(matchMaxAgea(0).ToString)
-            Dim MaxAge As Integer = Convert.ToInt32(matchMaxAgeb(0).ToString)
-            NumericUpDown2.Value = MaxAge
-        Catch ex As Exception
-
-        End Try
-    End Sub
-
-    Public Sub MinPassLeg()
-        Dim MinLega = New Regex("MinimumPasswordLength = -?\d+")
-        Dim MinLegb = New Regex("-?\d+")
-        Try
-            Dim matchMinLega As MatchCollection = MinLega.Matches(TextBox1.Text)
-            Dim matchMinLegb As MatchCollection = MinLegb.Matches(matchMinLega(0).ToString)
-            Dim MinLeg As Integer = Convert.ToInt32(matchMinLegb(0).ToString)
-            NumericUpDown3.Value = MinLeg
-        Catch ex As Exception
-
-        End Try
-    End Sub
-
-    Public Sub PassMem()
-        Dim PwdMema = New Regex("MinimumPasswordLength = -?\d+")
+    Public Sub setVal(ByVal rega As Regex, ByVal numupdw As Integer)
         Dim pwdMemb = New Regex("-?\d+")
         Try
-            Dim matchPwdMema As MatchCollection = PwdMema.Matches(TextBox1.Text)
+            Dim matchPwdMema As MatchCollection = rega.Matches(TextBox1.Text)
             Dim matchPwdMemb As MatchCollection = pwdMemb.Matches(matchPwdMema(0).ToString)
             Dim PwdMem As Integer = Convert.ToInt32(matchPwdMemb(0).ToString)
-            NumericUpDown4.Value = PwdMem
+            If numupdw = 1 Then
+                NumericUpDown1.Value = PwdMem
+            ElseIf numupdw = 2 Then
+                NumericUpDown2.Value = PwdMem
+            ElseIf numupdw = 3 Then
+                NumericUpDown3.Value = PwdMem
+            ElseIf numupdw = 4 Then
+                NumericUpDown4.Value = PwdMem
+            End If
         Catch ex As Exception
-
+            MsgBox(ex.ToString)
         End Try
     End Sub
 
@@ -194,20 +152,24 @@ Public Class Form1
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Dim CmdStr As String
-        CmdStr = "/configure /db secedit.sdb /cfg " + FILE_NAME + " /quiet"
-        Dim myProcess As Process
-        myProcess = New Process()
-        myProcess.StartInfo.FileName = "C:\Windows\System32\SecEdit.exe"
-        myProcess.StartInfo.Arguments = CmdStr
-        myProcess.Start()
+        Try
+            Dim CmdStr As String
+            CmdStr = "/configure /db secedit.sdb /cfg " + FILE_NAME + " /quiet"
+            Dim myProcess As Process
+            myProcess = New Process()
+            myProcess.StartInfo.FileName = "C:\Windows\System32\SecEdit.exe"
+            myProcess.StartInfo.Arguments = CmdStr
+            myProcess.Start()
 
-        CmdStr = "/refreshpolicy machine_policy /enforce /quiet"
+            CmdStr = "/refreshpolicy machine_policy /enforce /quiet"
 
-        myProcess = New Process()
-        myProcess.StartInfo.FileName = "C:\Windows\System32\SecEdit.exe"
-        myProcess.StartInfo.Arguments = CmdStr
-        myProcess.Start()
+            myProcess = New Process()
+            myProcess.StartInfo.FileName = "C:\Windows\System32\SecEdit.exe"
+            myProcess.StartInfo.Arguments = CmdStr
+            myProcess.Start()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
     End Sub
 
     Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
