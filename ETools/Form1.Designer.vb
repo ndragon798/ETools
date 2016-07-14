@@ -22,6 +22,7 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
@@ -63,10 +64,11 @@ Partial Class Form1
         'TabControl1
         '
         Me.TabControl1.Controls.Add(Me.TabPage1)
-        Me.TabControl1.Location = New System.Drawing.Point(0, 2)
+        Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TabControl1.Location = New System.Drawing.Point(0, 0)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(783, 370)
+        Me.TabControl1.Size = New System.Drawing.Size(776, 370)
         Me.TabControl1.TabIndex = 0
         '
         'TabPage1
@@ -99,7 +101,7 @@ Partial Class Form1
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(775, 344)
+        Me.TabPage1.Size = New System.Drawing.Size(768, 344)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Password Config"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -282,7 +284,6 @@ Partial Class Form1
         '
         Me.NumericUpDown4.Location = New System.Drawing.Point(187, 200)
         Me.NumericUpDown4.Maximum = New Decimal(New Integer() {24, 0, 0, 0})
-        Me.NumericUpDown4.Minimum = New Decimal(New Integer() {1, 0, 0, -2147483648})
         Me.NumericUpDown4.Name = "NumericUpDown4"
         Me.NumericUpDown4.Size = New System.Drawing.Size(35, 20)
         Me.NumericUpDown4.TabIndex = 8
@@ -290,8 +291,7 @@ Partial Class Form1
         'NumericUpDown3
         '
         Me.NumericUpDown3.Location = New System.Drawing.Point(187, 145)
-        Me.NumericUpDown3.Maximum = New Decimal(New Integer() {50, 0, 0, 0})
-        Me.NumericUpDown3.Minimum = New Decimal(New Integer() {1, 0, 0, -2147483648})
+        Me.NumericUpDown3.Maximum = New Decimal(New Integer() {14, 0, 0, 0})
         Me.NumericUpDown3.Name = "NumericUpDown3"
         Me.NumericUpDown3.Size = New System.Drawing.Size(35, 20)
         Me.NumericUpDown3.TabIndex = 7
@@ -299,8 +299,7 @@ Partial Class Form1
         'NumericUpDown2
         '
         Me.NumericUpDown2.Location = New System.Drawing.Point(187, 88)
-        Me.NumericUpDown2.Maximum = New Decimal(New Integer() {120, 0, 0, 0})
-        Me.NumericUpDown2.Minimum = New Decimal(New Integer() {1, 0, 0, -2147483648})
+        Me.NumericUpDown2.Maximum = New Decimal(New Integer() {998, 0, 0, 0})
         Me.NumericUpDown2.Name = "NumericUpDown2"
         Me.NumericUpDown2.Size = New System.Drawing.Size(35, 20)
         Me.NumericUpDown2.TabIndex = 6
@@ -308,8 +307,7 @@ Partial Class Form1
         'NumericUpDown1
         '
         Me.NumericUpDown1.Location = New System.Drawing.Point(187, 34)
-        Me.NumericUpDown1.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
-        Me.NumericUpDown1.Minimum = New Decimal(New Integer() {1, 0, 0, -2147483648})
+        Me.NumericUpDown1.Maximum = New Decimal(New Integer() {998, 0, 0, 0})
         Me.NumericUpDown1.Name = "NumericUpDown1"
         Me.NumericUpDown1.Size = New System.Drawing.Size(35, 20)
         Me.NumericUpDown1.TabIndex = 5
@@ -365,6 +363,11 @@ Partial Class Form1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(776, 370)
         Me.Controls.Add(Me.TabControl1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(792, 408)
+        Me.MinimizeBox = False
+        Me.MinimumSize = New System.Drawing.Size(792, 408)
         Me.Name = "Form1"
         Me.Text = "ETools"
         Me.TabControl1.ResumeLayout(false)

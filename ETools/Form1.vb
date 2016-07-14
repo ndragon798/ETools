@@ -136,16 +136,20 @@ Public Class Form1
         Dim PwdMema = New Regex("PasswordHistorySize = -?\d+")
         Dim matchPwdMema As MatchCollection = PwdMema.Matches(TextBox1.Text)
         Try
-            TextBox1.Text = TextBox1.Text.Replace(matchPwdMema(0).ToString, "PasswordHistorySize = " + CStr(NumericUpDown3.Value))
+            TextBox1.Text = TextBox1.Text.Replace(matchPwdMema(0).ToString, "PasswordHistorySize = " + CStr(NumericUpDown4.Value))
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
     End Sub
-    Dim FILE_NAME As String = GetFolderPath(SpecialFolder.ApplicationData) + "\ncfg.inf"
+    'Dim FILE_NAME As String = GetFolderPath(SpecialFolder.ApplicationData) + "\ncfg.inf"
+    Dim FILE_NAME As String = """C:\ncfg.inf"""
+    Dim FILE_NAMEA As String = "C:\ncfg.inf"
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-
-        File.Create(FILE_NAME).Dispose()
-        Dim objWriter As New StreamWriter(FILE_NAME)
+        If File.Exists(FILE_NAMEA) Then
+            File.Delete(FILE_NAMEA)
+        End If
+        File.Create(FILE_NAMEA).Dispose()
+        Dim objWriter As New StreamWriter(FILE_NAMEA)
         objWriter.Write(TextBox1.Text)
         objWriter.Close()
         Button2.Enabled = True
@@ -154,11 +158,12 @@ Public Class Form1
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Try
             Dim CmdStr As String
-            CmdStr = "/configure /db secedit.sdb /cfg " + FILE_NAME + " /quiet"
+            CmdStr = "/configure /db secedit.sdb /cfg " + FILE_NAME
             Dim myProcess As Process
             myProcess = New Process()
             myProcess.StartInfo.FileName = "C:\Windows\System32\SecEdit.exe"
             myProcess.StartInfo.Arguments = CmdStr
+            myProcess.StartInfo.CreateNoWindow = True
             myProcess.Start()
 
             CmdStr = "/refreshpolicy machine_policy /enforce /quiet"
@@ -170,6 +175,8 @@ Public Class Form1
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
+        Threading.Thread.Sleep(2000)
+        'Application.Restart()
     End Sub
 
     Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
