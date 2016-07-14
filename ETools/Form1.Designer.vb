@@ -24,6 +24,7 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label8 = New System.Windows.Forms.Label()
@@ -50,7 +51,6 @@ Partial Class Form1
         Me.minPasLeg = New System.Windows.Forms.Label()
         Me.maxPasAge = New System.Windows.Forms.Label()
         Me.minPasAge = New System.Windows.Forms.Label()
-        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -103,6 +103,16 @@ Partial Class Form1
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Password Config"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'LinkLabel1
+        '
+        Me.LinkLabel1.AutoSize = True
+        Me.LinkLabel1.Location = New System.Drawing.Point(701, 266)
+        Me.LinkLabel1.Name = "LinkLabel1"
+        Me.LinkLabel1.Size = New System.Drawing.Size(32, 13)
+        Me.LinkLabel1.TabIndex = 26
+        Me.LinkLabel1.TabStop = True
+        Me.LinkLabel1.Text = "V 1.0"
         '
         'Button2
         '
@@ -272,6 +282,7 @@ Partial Class Form1
         '
         Me.NumericUpDown4.Location = New System.Drawing.Point(187, 200)
         Me.NumericUpDown4.Maximum = New Decimal(New Integer() {24, 0, 0, 0})
+        Me.NumericUpDown4.Minimum = New Decimal(New Integer() {1, 0, 0, -2147483648})
         Me.NumericUpDown4.Name = "NumericUpDown4"
         Me.NumericUpDown4.Size = New System.Drawing.Size(35, 20)
         Me.NumericUpDown4.TabIndex = 8
@@ -280,28 +291,28 @@ Partial Class Form1
         '
         Me.NumericUpDown3.Location = New System.Drawing.Point(187, 145)
         Me.NumericUpDown3.Maximum = New Decimal(New Integer() {50, 0, 0, 0})
+        Me.NumericUpDown3.Minimum = New Decimal(New Integer() {1, 0, 0, -2147483648})
         Me.NumericUpDown3.Name = "NumericUpDown3"
         Me.NumericUpDown3.Size = New System.Drawing.Size(35, 20)
         Me.NumericUpDown3.TabIndex = 7
-        Me.NumericUpDown3.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'NumericUpDown2
         '
         Me.NumericUpDown2.Location = New System.Drawing.Point(187, 88)
         Me.NumericUpDown2.Maximum = New Decimal(New Integer() {120, 0, 0, 0})
+        Me.NumericUpDown2.Minimum = New Decimal(New Integer() {1, 0, 0, -2147483648})
         Me.NumericUpDown2.Name = "NumericUpDown2"
         Me.NumericUpDown2.Size = New System.Drawing.Size(35, 20)
         Me.NumericUpDown2.TabIndex = 6
-        Me.NumericUpDown2.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'NumericUpDown1
         '
         Me.NumericUpDown1.Location = New System.Drawing.Point(187, 34)
-        Me.NumericUpDown1.Maximum = New Decimal(New Integer() {120, 0, 0, 0})
+        Me.NumericUpDown1.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.NumericUpDown1.Minimum = New Decimal(New Integer() {1, 0, 0, -2147483648})
         Me.NumericUpDown1.Name = "NumericUpDown1"
         Me.NumericUpDown1.Size = New System.Drawing.Size(35, 20)
         Me.NumericUpDown1.TabIndex = 5
-        Me.NumericUpDown1.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'pasCom
         '
@@ -347,16 +358,6 @@ Partial Class Form1
         Me.minPasAge.Size = New System.Drawing.Size(117, 13)
         Me.minPasAge.TabIndex = 0
         Me.minPasAge.Text = "Minimum password age"
-        '
-        'LinkLabel1
-        '
-        Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Location = New System.Drawing.Point(701, 266)
-        Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(32, 13)
-        Me.LinkLabel1.TabIndex = 26
-        Me.LinkLabel1.TabStop = True
-        Me.LinkLabel1.Text = "V 1.0"
         '
         'Form1
         '

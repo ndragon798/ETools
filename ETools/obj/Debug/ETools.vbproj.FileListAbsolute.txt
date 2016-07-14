@@ -9,3 +9,14 @@ c:\users\nathan\documents\visual studio 2013\Projects\ETools\ETools\obj\Debug\ET
 c:\users\nathan\documents\visual studio 2013\Projects\ETools\ETools\obj\Debug\ETools.xml
 c:\users\nathan\documents\visual studio 2013\Projects\ETools\ETools\obj\Debug\ETools.pdb
 C:\Users\Nathan\documents\visual studio 2013\Projects\ETools\ETools\obj\Debug\ETools.vbprojResolveAssemblyReference.cache
+C:\Users\neast01\Source\Repos\ETools\ETools\bin\Debug\ETools.exe.config
+C:\Users\neast01\Source\Repos\ETools\ETools\obj\Debug\ETools.exe
+C:\Users\neast01\Source\Repos\ETools\ETools\obj\Debug\ETools.xml
+C:\Users\neast01\Source\Repos\ETools\ETools\obj\Debug\ETools.pdb
+C:\Users\neast01\Source\Repos\ETools\ETools\bin\Debug\ETools.exe
+C:\Users\neast01\Source\Repos\ETools\ETools\bin\Debug\ETools.pdb
+C:\Users\neast01\Source\Repos\ETools\ETools\bin\Debug\ETools.xml
+C:\Users\neast01\Source\Repos\ETools\ETools\obj\Debug\ETools.vbprojResolveAssemblyReference.cache
+C:\Users\neast01\Source\Repos\ETools\ETools\obj\Debug\ETools.Form1.resources
+C:\Users\neast01\Source\Repos\ETools\ETools\obj\Debug\ETools.Resources.resources
+C:\Users\neast01\Source\Repos\ETools\ETools\obj\Debug\ETools.vbproj.GenerateResource.Cache
