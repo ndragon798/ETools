@@ -13,9 +13,7 @@ Public Class Form1
         myProcess.StartInfo.Arguments = CmdStr
         myProcess.Start()
         myProcess.WaitForExit()
-        'Threading.Thread.Sleep(10000)
         Dim EntireFile As String
-        'Dim oFile As System.IO.File
         Dim oRead As StreamReader
         Try
             oRead = File.OpenText(GetFolderPath(SpecialFolder.ApplicationData) + "\cfg.inf")
@@ -184,8 +182,6 @@ Public Class Form1
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
-        Threading.Thread.Sleep(2000)
-        'Application.Restart()
     End Sub
 
     Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
