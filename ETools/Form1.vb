@@ -12,16 +12,20 @@ Public Class Form1
         myProcess.StartInfo.FileName = "C:\Windows\System32\SecEdit.exe"
         myProcess.StartInfo.Arguments = CmdStr
         myProcess.Start()
-        Threading.Thread.Sleep(2000)
+        myProcess.WaitForExit()
+        'Threading.Thread.Sleep(10000)
         Dim EntireFile As String
         'Dim oFile As System.IO.File
         Dim oRead As StreamReader
-        oRead = File.OpenText(GetFolderPath(SpecialFolder.ApplicationData) + "\cfg.inf")
+        Try
+            oRead = File.OpenText(GetFolderPath(SpecialFolder.ApplicationData) + "\cfg.inf")
 
-        EntireFile = oRead.ReadToEnd()
-        TextBox1.Text = (EntireFile)
+            EntireFile = oRead.ReadToEnd()
+            TextBox1.Text = (EntireFile)
+            oRead.Dispose()
+            oRead.Close()
 
-        PassWordComplexity()
+            PassWordComplexity()
 
         GuestAccountSet()
 
@@ -31,7 +35,11 @@ Public Class Form1
 
         setVal(New Regex("MinimumPasswordLength = -?\d+"), 3)
 
-        setVal(New Regex("PasswordHistorySize = -?\d+"), 4)
+            setVal(New Regex("PasswordHistorySize = -?\d+"), 4)
+
+        Catch ex As Exception
+            MsgBox("Something went wrong with secedit making the cfg file try and rerun the program.")
+        End Try
     End Sub
     Public Sub PassWordComplexity()
         If TextBox1.Text.Contains("PasswordComplexity = 0") Then
@@ -165,13 +173,14 @@ Public Class Form1
             myProcess.StartInfo.Arguments = CmdStr
             myProcess.StartInfo.CreateNoWindow = True
             myProcess.Start()
-
+            myProcess.WaitForExit()
             CmdStr = "/refreshpolicy machine_policy /enforce /quiet"
 
             myProcess = New Process()
             myProcess.StartInfo.FileName = "C:\Windows\System32\SecEdit.exe"
             myProcess.StartInfo.Arguments = CmdStr
             myProcess.Start()
+            myProcess.WaitForExit()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -181,5 +190,14 @@ Public Class Form1
 
     Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
         Process.Start("https://github.com/ndragon798")
+    End Sub
+    Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        Try
+            File.Delete(FILE_NAMEA)
+            File.Delete(GetFolderPath(SpecialFolder.ApplicationData) + "\cfg.inf")
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+
     End Sub
 End Class

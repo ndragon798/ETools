@@ -300,6 +300,7 @@ Partial Class Form1
         '
         Me.NumericUpDown2.Location = New System.Drawing.Point(187, 88)
         Me.NumericUpDown2.Maximum = New Decimal(New Integer() {998, 0, 0, 0})
+        Me.NumericUpDown2.Minimum = New Decimal(New Integer() {1, 0, 0, -2147483648})
         Me.NumericUpDown2.Name = "NumericUpDown2"
         Me.NumericUpDown2.Size = New System.Drawing.Size(35, 20)
         Me.NumericUpDown2.TabIndex = 6
